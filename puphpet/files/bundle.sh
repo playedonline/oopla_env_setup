@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/bash -x
 cd /var/oopla && bundle install
 
 bundle exec rake db:create

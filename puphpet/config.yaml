@@ -35,8 +35,8 @@ vagrantfile:
                                     host: '2222'
                                     guest: '22'
                                 port_lg5:
-                                    host: '9306'
-                                    guest: '3306'
+                                    host: '9379'
+                                    guest: '6379'
                         memory: '1024'
                         cpus: '2'
         provision:
