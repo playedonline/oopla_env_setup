@@ -20,17 +20,17 @@ vagrantfile:
                         update_guest_tools: 0
                 machines:
                     machine1:
-                        id: oopla
-                        hostname: oopla.puphpet
+                        id: yepi
+                        hostname: yepi.puphpet
                         network:
-                            private_network: 192.168.56.101
+                            private_network: 192.168.56.102
                             forwarded_port:
                                 port1:
                                     host: '3000'
                                     guest: '3000'
                                 port_f2r:
                                     host: '9306'
-                                    guest: '9306'
+                                    guest: '3306'
                                 port_8sz:
                                     host: '2222'
                                     guest: '22'
@@ -52,8 +52,8 @@ vagrantfile:
             folder1:
                 owner: vagrant
                 group: vagrant
-                source: ./oopla
-                target: /var/oopla
+                source: ./yepi
+                target: /var/yepi
                 sync_type: default
                 smb:
                     smb_host: ''
@@ -146,7 +146,7 @@ nginx:
         names_hash_bucket_size: 128
     upstreams:
         upstream_st4:
-            name: oopla_rails
+            name: yepi_rails
             upstream_fail_timeout: 10s
             members:
                 - 'localhost:3000'
@@ -269,17 +269,8 @@ drush:
     install: '0'
     version: 8.0.5
 ruby:
-    install: '1'
-    versions:
-        ruby1:
-            default: '1'
-            bundler: '1'
-            version: '2.3.3'
-            gems:
-                - deep_merge@1.2.1
-                - activesupport@5.1.4
-                - vine@0.4
-                - rake@0.9.2.2
+    install: '0'
+    versions: {  }
 python:
     install: '0'
     packages: {  }
@@ -318,7 +309,7 @@ mysql:
         override_options: {  }
     users:
         user1:
-            name: oopla
+            name: yepi
             password: '123123'
     databases: {  }
     grants: {  }
