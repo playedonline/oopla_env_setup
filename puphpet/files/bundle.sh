@@ -1,7 +1,6 @@
 #!/bin/bash -x
 
-rvm install ruby-2.1.10 --default
-gem install bundler
+rvm install ruby-2.1.10
 
 if [[ ! -f /var/yepi/config/database.yml ]]; then
 	cat <<EOF > /var/yepi/config/database.yml
@@ -64,9 +63,14 @@ EOF
 
 fi
 
+bash -l << EOF
+rvm use 2.1.10 --default
+gem install bundler
+
 cd /var/yepi && bundle install
 
 bundle exec rake db:create
+EOF
 
 mysql -u root -p123123 yepi_development < /vagrant/puphpet/files/sql/schema.sql
 mysql -u root -p123123 yepi_development < /vagrant/puphpet/files/sql/collections.sql
